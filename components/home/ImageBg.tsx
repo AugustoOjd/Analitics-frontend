@@ -1,22 +1,72 @@
-import { Box, HStack } from '@chakra-ui/react'
+import { ArrowForwardIcon, Search2Icon, ViewIcon } from '@chakra-ui/icons'
+import { Box, Spacer, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 
 const bgImage = "https://i.pinimg.com/originals/73/82/7d/73827da9b8ed47b7d73c54f099256f43.png"
 
+const data = [
+  {
+    title: 'Ingresa',
+    icon: <ArrowForwardIcon boxSize={7} color={'orange.300'}/>,
+    xs: '230px',
+    sm: '200px',
+    md: '230px',
+    xl: '250px',
+    gt: 'linear(to-l, orange.400, teal.400)'
+  },
+  {
+    title: 'Prueba',
+    icon: <ArrowForwardIcon boxSize={7} color={'orange.300'}/>,
+    xs: '200px',
+    sm: '180px',
+    md: '190px',
+    xl: '220px',
+    gt: 'linear(to-tl, orange.300, teal.500)'
+  },
+  {
+    title: 'Interactua',
+    icon: <ArrowForwardIcon boxSize={7} color={'orange.300'}/>,
+    xs: '170px',
+    sm: '160px',
+    md: '170px',
+    xl: '200px',
+    gt: 'linear(to-tl, orange.200, teal.600)'
+  }
+]
+
 function ImageBg() {
   return (
-    <Box display={'flex'} justifyContent={'center'} alignItems={'flex-start'} bgImage={`url(${bgImage})`} bgSize={'100% 100%'} bgRepeat={'no-repeat'} h={'100%'} w={'100%'}>
-      <HStack spacing={['8px']} p={5}>
-        <Box w={['75px', '65px', '100px', '120px']} h='40px' bg='yellow.200'>
-          Ingresa
-        </Box>
-        <Box w={['75px', '65px', '100px', '120px']} h='40px' bg='tomato'>
-          Prueba
-        </Box>
-        <Box w={['75px', '65px', '100px', '120px']} h='40px' bg='pink.100'>
-          Interactua
-        </Box>
-      </HStack>
+    <Box display={'flex'} justifyContent={['flex-start', 'flex-start', 'flex-start', 'flex-start', 'center']} alignItems={'flex-start'} bgImage={`url(${bgImage})`} bgSize={'100% 100%'} bgRepeat={'no-repeat'} h={'100%'} w={'100%'}>
+      <Stack direction={['column', 'column', 'column', 'column', 'row']} spacing={['10px', '8px']} p={5}>
+        {
+          data.map((t:any) => (
+            <Box w={[t.xs, t.sm, t.md, t.xl, '180px']} 
+            display={'flex'} 
+            justifyContent={'flex-start'}
+            alignItems={'center'}
+            h='40px'
+            px={2}
+            bg={'white'}
+            rounded={'xl'}
+            boxShadow={'base'} 
+            >
+              <Text 
+                bgGradient={t.gt}
+                bgClip='text'
+                mr={2} 
+                fontSize={'2xl'}
+                fontWeight={'bold'}
+                >
+                  {t.title}
+              </Text>
+              <Spacer />
+              <Box>
+                {t.icon}
+              </Box>
+          </Box>
+          ))
+        }
+      </Stack>
     </Box>
   )
 }

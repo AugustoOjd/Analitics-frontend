@@ -7,11 +7,11 @@ import { Box, Stack } from '@chakra-ui/react'
 
 function HomeContainer() {
   return (
-        <Stack direction={['column', 'row']} w={'100%'} h={650} spacing={0}>
-          <Box w={['100%', '45%']} h={[360, 650]}>
+        <Stack direction={['column', 'row']} w={'100%'} h={[800, 650, 700, 800]} spacing={0}>
+          <Box w={['100%', '45%']} h={[300, 650, 700, 800]}>
             <ImageBg/>
           </Box>
-          <Box w={['100%', '55%']} h={[600, 650]} >
+          <Box w={['100%', '55%']} h={[500, 650, 700, 800]} >
             <FormContainer/>
           </Box>
         </Stack>

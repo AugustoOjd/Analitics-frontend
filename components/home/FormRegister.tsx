@@ -14,7 +14,7 @@ function FormRegister() {
             <Input placeholder='Nombre' />
             <FormLabel>Email address</FormLabel>
             <Input type='email' placeholder='Email' />
-            <FormLabel>Email address</FormLabel>
+            <FormLabel>Password</FormLabel>
             <Input type='password' placeholder='Password'/>
             <FormHelperText>Algun error del form.</FormHelperText>
             <Button
@@ -22,7 +22,7 @@ function FormRegister() {
             colorScheme='teal'
             type='submit'
           >
-            Submit
+            Registrarse
           </Button>
         </FormControl>
   )

@@ -4,38 +4,47 @@ import React, { useState } from 'react'
 const data = [
     {
         title: 'Movie Analitic',
-        description: 'App de peliculas y series para interactuar y mirar detalles'
+        description: 'Es una app de peliculas y series, puede simular una subscripcion o comprar peliculas'
     },
     {
         title: 'Interaciones',
-        description: 'Las interaciones son muy importantes para probar la aplicacion'
+        description: 'Las interaciones son muy importantes para probar la aplicacion, forman parte de las estadisticas de la app.'
     },
     {
         title: 'Sugerencias',
-        description: 'Cada usuario tendran sus sugerencias personalizada dependiendo el uso'
+        description: 'Cada usuario tendran sus sugerencias personalizada dependiendo las interacciones y compras.'
     }
 ]
 
 function FooterGrid() {
 
   return (
-    <HStack spacing={[2, '15px', '50px', '100px']}>
+    <Stack direction={['column', 'row']} spacing={[3, '15px', '50px', '100px']}>
         {
             data.map((e:any)=> (
-                <Box w={['100px', '150px', '200px']} h={['160px', '130px', '150px']} bg='white' borderWidth='1px' borderRadius='lg'>
-                <Stack p={1}>
-                    <Heading as='h6' size='xs'>
-                        {e.title}
-                    </Heading>
+                <Box w={['280px', '150px', '200px', '250px']} h={['110px', '150px', '150px', '180px']} bg='white'
+                    borderWidth='1px' 
+                    borderRadius='md' 
+                    boxShadow={'lg'}
+                    borderColor={'cyan.800'}
+                    >
+                <Stack p={2}>
+                    <Box display={'flex'} justifyContent={'flex-start'} alignItems={'center'}>
+                        <Heading as='h6' size='xs'>
+                            {e.title}
+                        </Heading>
+                    </Box>
                     <Divider />
-                    <Text fontSize='xs'>
-                        {e.description}
-                    </Text>
+                    <Box display={'flex'} justifyContent={'flex-start'} alignItems={'center'}>
+                        <Text fontSize='xs'>
+                            {e.description}
+                        </Text>
+                    </Box>
                 </Stack>
               </Box>
             ))
         }
-    </HStack>
+    </Stack>
   )
 }
 

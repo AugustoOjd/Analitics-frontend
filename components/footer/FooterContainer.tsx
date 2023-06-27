@@ -7,8 +7,8 @@ import FooterNet from './FooterNet'
 
 function FooterContainer() {
   return (
-    <Box w={'100%'} bg={'blue.200'} h={220} >
-      <Box bg={'white'} h={170} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+    <Box w={'100%'} bg={'gray.800'} h={[450, 250, 300, 350, 400]} >
+      <Box bg={'white'} h={[400, 200, 250, 300, 350]} display={'flex'} px={2} justifyContent={'center'} alignItems={'center'}>
         <FooterGrid/>
       </Box>
       <Box h={50} display={'flex'} justifyContent={'center'} alignItems={'center'}>
