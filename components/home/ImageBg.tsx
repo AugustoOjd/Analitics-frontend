@@ -1,6 +1,7 @@
 import { ArrowForwardIcon, Search2Icon, ViewIcon } from '@chakra-ui/icons'
 import { Box, Spacer, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
+import CardHeader from '@/components/home/CardHeader'
 
 const bgImage = "https://i.pinimg.com/originals/73/82/7d/73827da9b8ed47b7d73c54f099256f43.png"
 
@@ -40,30 +41,15 @@ function ImageBg() {
       <Stack direction={['column', 'column', 'column', 'column', 'row']} spacing={['10px', '8px']} p={5}>
         {
           data.map((t:any) => (
-            <Box w={[t.xs, t.sm, t.md, t.xl, '180px']} 
-            display={'flex'} 
-            justifyContent={'flex-start'}
-            alignItems={'center'}
-            h='40px'
-            px={2}
-            bg={'white'}
-            rounded={'xl'}
-            boxShadow={'base'} 
-            >
-              <Text 
-                bgGradient={t.gt}
-                bgClip='text'
-                mr={2} 
-                fontSize={'2xl'}
-                fontWeight={'bold'}
-                >
-                  {t.title}
-              </Text>
-              <Spacer />
-              <Box>
-                {t.icon}
-              </Box>
-          </Box>
+            <CardHeader 
+              key={t.index} 
+              title={t.title}
+              icon={t.icon} 
+              xs={t.xs} 
+              sm={t.sm} 
+              md={t.md} 
+              xl={t.xl} 
+              gt={t.gt} />
           ))
         }
       </Stack>

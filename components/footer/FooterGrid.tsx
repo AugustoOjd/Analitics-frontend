@@ -1,5 +1,6 @@
 import { Box, Divider, HStack, Heading, Stack, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import FooterGridCard from './FooterGridCard'
 
 const data = [
     {
@@ -22,26 +23,7 @@ function FooterGrid() {
     <Stack direction={['column', 'row']} spacing={[3, '15px', '50px', '100px']}>
         {
             data.map((e:any)=> (
-                <Box w={['280px', '150px', '200px', '250px']} h={['110px', '150px', '150px', '180px']} bg='white'
-                    borderWidth='1px' 
-                    borderRadius='md' 
-                    boxShadow={'lg'}
-                    borderColor={'cyan.800'}
-                    >
-                <Stack p={2}>
-                    <Box display={'flex'} justifyContent={'flex-start'} alignItems={'center'}>
-                        <Heading as='h6' size='xs'>
-                            {e.title}
-                        </Heading>
-                    </Box>
-                    <Divider />
-                    <Box display={'flex'} justifyContent={'flex-start'} alignItems={'center'}>
-                        <Text fontSize='xs'>
-                            {e.description}
-                        </Text>
-                    </Box>
-                </Stack>
-              </Box>
+                <FooterGridCard key={e.index} title={e.title} description={e.description}/>
             ))
         }
     </Stack>
