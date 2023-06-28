@@ -16,13 +16,13 @@ function FooterGridCard({title, description}:Props) {
     >
         <Stack p={2}>
             <Box display={'flex'} justifyContent={'flex-start'} alignItems={'center'}>
-                <Heading as='h6' size='xs'>
+                <Heading as='h6' size={['xs', 'xs', 'sm', 'md']}>
                     {title}
                 </Heading>
             </Box>
             <Divider />
             <Box display={'flex'} justifyContent={'flex-start'} alignItems={'center'}>
-                <Text fontSize='xs'>
+                <Text fontSize={['xs', 'xs', 'sm', 'md']}>
                     {description}
                 </Text>
             </Box>

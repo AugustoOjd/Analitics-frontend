@@ -1,3 +1,5 @@
+'use client'
+
 import { ArrowForwardIcon, Search2Icon, ViewIcon } from '@chakra-ui/icons'
 import { Box, Spacer, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
@@ -42,7 +44,7 @@ function ImageBg() {
         {
           data.map((t:any) => (
             <CardHeader 
-              key={t.index} 
+              key={t.title} 
               title={t.title}
               icon={t.icon} 
               xs={t.xs} 

@@ -1,15 +1,14 @@
 "use client"
 
 import NavbarContainer from '@/components/navbar/NavbarContainer'
+import DashboardContainer from '@/components/userDashboard/DashboardContainer'
 import React from 'react'
 
 function DashboardPage() {
   return (
     <main>
       <NavbarContainer/>
-        <div>
-            <h1>Hello dashboardPage</h1>
-        </div>
+      <DashboardContainer/>
     </main>
   )
 }
