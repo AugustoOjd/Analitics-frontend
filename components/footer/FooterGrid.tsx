@@ -23,7 +23,7 @@ function FooterGrid() {
     <Stack direction={['column', 'row']} spacing={[3, '15px', '50px', '100px']}>
         {
             data.map((e:any)=> (
-                <FooterGridCard key={e.index} title={e.title} description={e.description}/>
+                <FooterGridCard key={e.title} title={e.title} description={e.description}/>
             ))
         }
     </Stack>

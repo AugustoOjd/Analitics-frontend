@@ -1,3 +1,5 @@
+'use client'
+
 import FooterContainer from "@/components/footer/FooterContainer";
 import { Providers } from "./providers";
 import { Inter } from 'next/font/google'
@@ -16,13 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" /> */}
-      <body>
+      <body
+        suppressHydrationWarning={true}
+      >
           <Providers>
             {children}
             <FooterContainer/>
           </Providers>
-        {/* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> */}
       </body>
     </html>
   )

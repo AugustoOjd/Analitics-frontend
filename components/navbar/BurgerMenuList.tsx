@@ -1,5 +1,5 @@
 import { ArrowDownIcon, ArrowForwardIcon, CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
-import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, StackDivider, VStack, useDisclosure } from '@chakra-ui/react'
+import { Avatar, Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, Spacer, StackDivider, VStack, useDisclosure } from '@chakra-ui/react'
 import React, { useRef, useState } from 'react'
 
 function BurgerMenuList() {
@@ -11,6 +11,7 @@ function BurgerMenuList() {
   
   return (
     <>
+    <Flex>
     <Button ref={btnRef} colorScheme='gray' onClick={onOpen}>
     {isOpen ? <CloseIcon/>  : <HamburgerIcon/>}
     </Button>
@@ -149,6 +150,12 @@ function BurgerMenuList() {
             </DrawerFooter>
             </DrawerContent>
         </Drawer>
+
+        <Spacer/>
+            <Box w={['auto']} h='40px'>
+                <Avatar name='Dan Abrahmov' src='https://bit.ly/dan-abramov' />
+            </Box>
+        </Flex>
     </>
   )
 }
