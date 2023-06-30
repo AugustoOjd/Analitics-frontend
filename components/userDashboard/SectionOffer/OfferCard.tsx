@@ -67,7 +67,7 @@ function OfferCard() {
             h={['60px', '60px', '250px', '300px']}
             alignItems={'center'}
             >
-                <OfferItemsCard key={index} icon={i.icon} save={i.save} cost={i.cost}/>
+                <OfferItemsCard key={i.title} icon={i.icon} save={i.save} cost={i.cost}/>
           </Stack>
       </Box>
       </LinkBox>
