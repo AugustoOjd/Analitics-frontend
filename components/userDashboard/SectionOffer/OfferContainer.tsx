@@ -10,13 +10,13 @@ import { TimeIcon } from '@chakra-ui/icons'
 function OfferContainer() {
   return (
     <Box 
-      h={['360px']} 
+      h={['360px', '360px', '360px', '400px', '500px']} 
       bg={'white'} 
       display={'flex'} 
       justifyContent={'center'} 
       alignItems={'center'}
       >
-        <Stack direction={['column', 'column', 'row']} spacing={['15px']}>
+        <Stack direction={['column', 'column', 'row']} spacing={['15px', '15px', '30px', '40px', '50px']}>
               <OfferCard/>
         </Stack>
     </Box>

@@ -35,8 +35,8 @@ function OfferCard() {
         onClick={()=> console.log(i.title)}
         >
       <Box 
-        w={['280px']} 
-        h={['98px']} 
+        w={['280px', '280px', '200px', '250px', '300px']} 
+        h={['98px', '98px', '300px', '350px']} 
         bg='#f2f2f2' 
         rounded={'lg'} 
         boxShadow={'md'}
@@ -60,14 +60,15 @@ function OfferCard() {
         
         <Divider borderColor='#f96d00' />
         
-        <Stack 
-          direction={['row', 'row', 'column']} 
-          spacing='15px' 
-          w={'100%'} 
-          h={['60px']}
-          >
-              <OfferItemsCard key={index} icon={i.icon} save={i.save} cost={i.cost}/>
-        </Stack>
+          <Stack 
+            direction={['row', 'row', 'column']} 
+            spacing={['15px']} 
+            w={'100%'} 
+            h={['60px', '60px', '250px', '300px']}
+            alignItems={'center'}
+            >
+                <OfferItemsCard key={index} icon={i.icon} save={i.save} cost={i.cost}/>
+          </Stack>
       </Box>
       </LinkBox>
       ))
