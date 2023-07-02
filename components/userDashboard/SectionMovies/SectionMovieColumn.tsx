@@ -268,6 +268,34 @@ function SectionMovieColumn() {
                   </HStack>
             </Box>
         </Stack>
+        <Stack direction={['column']} gap={'20px'}>
+            <Box>
+                <Heading 
+                h={3}
+                ml={2} 
+                fontSize={'xl'}
+                color={'white'}
+                >Porque viste...</Heading>
+            </Box>
+            <Box 
+                w={['310px', '400px', '750px', '900px', '1200px', '1700px']} 
+                h={['220px', '250px', '300px']}
+                bg='orange.100'
+                display={'flex'}
+                justifyContent={'flex-start'}
+                alignItems={'center'}
+                overflowX={'auto'}
+                px={2}
+                >
+                  <HStack gap={5}>
+                  {
+                    data.map((e:any, i)=> (
+                      <CardMovie key={i} image={e.image} title={e.title} vip={e.vip} price={e.price}  />
+                    ))
+                  }
+                  </HStack>
+            </Box>
+        </Stack>
 
 
 
