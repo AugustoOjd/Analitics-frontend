@@ -1,9 +1,11 @@
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { Avatar, Box, Button, HStack, Menu, MenuButton, MenuItem, MenuList, Spacer } from '@chakra-ui/react'
+import Link from 'next/link'
 import React from 'react'
 
 
 function NormalMenuList() {
+
   return (
     <HStack w={'100%'} spacing='24px'>
       <Box w={['auto']} h='40px'>
@@ -13,7 +15,9 @@ function NormalMenuList() {
       <Spacer/>
 
       <Box w={['auto']} h='40px' alignItems={'center'} >
-        <Button colorScheme='gray' >Home</Button>
+        <Button colorScheme='gray' >
+          <Link href="/dashboard">Home</Link>
+        </Button>
       </Box>
       <Box w={['auto']} h='40px' >
         <Menu>
@@ -21,10 +25,26 @@ function NormalMenuList() {
                 Category
             </MenuButton>
             <MenuList color={'gray.900'}>
-                <MenuItem>Action</MenuItem>
-                <MenuItem>Drama</MenuItem>
-                <MenuItem>Horror</MenuItem>
-                <MenuItem>Fantasy</MenuItem>
+                <MenuItem>
+                <Link href={'/movies/action'}>
+                        Action
+                </Link>
+                </MenuItem>
+                <MenuItem>
+                <Link href={'/movies/drama'}>
+                          Drama
+                </Link>
+                </MenuItem>
+                <MenuItem>
+                <Link href={'/movies/terror'}>
+                          Terror
+                </Link>
+                </MenuItem>
+                <MenuItem>
+                <Link href={'/movies/fantasy'}>
+                          Fantasy
+                </Link>
+                </MenuItem>
             </MenuList>
         </Menu>
       </Box>
@@ -44,7 +64,9 @@ function NormalMenuList() {
       <Spacer/>
 
       <Box w={['auto']} h='40px' >
-      <Button colorScheme='blue'>Logout</Button>
+        <Link href={'/'} replace>
+          <Button colorScheme='blue'>Logout</Button>
+        </Link>
       </Box>
     </HStack> 
   )

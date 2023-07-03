@@ -37,20 +37,20 @@ function OfferCard() {
       <Box 
         w={['280px', '280px', '200px', '250px', '300px']} 
         h={['98px', '98px', '300px', '350px']} 
-        bg='#f2f2f2' 
+        bg='gray.800' 
         rounded={'lg'} 
         boxShadow={'md'}
-        border={'1px'}
-        borderColor={'gray.300'}
+        border={'2px'}
+        borderColor={'#f96d00'}
         p={2}
         _hover={{
-          color: "gray.900",
+          // color: "gray.400",
           boxShadow: 'lg',
-          bg: 'orange.200',
+          bg: 'gray.700',
         }}
         >
         <Heading
-          color={'gray.900'} 
+          color={'white'} 
           h={5} 
           fontSize={'md'}
           mb={1}

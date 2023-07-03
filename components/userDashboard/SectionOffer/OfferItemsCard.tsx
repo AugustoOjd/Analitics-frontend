@@ -19,8 +19,8 @@ function OfferItemsCard({icon, save, cost}:Props) {
         justifyContent={['space-evenly', 'space-evenly']}
         alignItems={'center'}
         >
-        <Text color={'gray.900'} fontSize={['xs', 'xs', 'sm', 'md']} fontWeight={'bold'}>Sin Limite</Text>
-        <Text fontSize={['2xl', '2xl', '3xl', '4xl']} color={'gray.900'}>
+        <Text color={'white'} fontSize={['xs', 'xs', 'sm', 'md']} fontWeight={'bold'}>Sin Limite</Text>
+        <Text fontSize={['2xl', '2xl', '3xl', '4xl']} color={'white'}>
             {icon}
         </Text>
     </Box>
@@ -32,12 +32,12 @@ function OfferItemsCard({icon, save, cost}:Props) {
         justifyContent={'space-evenly'}
         alignItems={'center'}
         >
-        <Text color={'gray.900'} fontSize={['xs', 'xs', 'sm', 'md']} fontWeight={'bold'}>Ahorras</Text>
+        <Text color={'white'} fontSize={['xs', 'xs', 'sm', 'md']} fontWeight={'bold'}>Ahorras</Text>
         <Box display={'flex'}>
-            <Text fontSize={['2xl', '2xl', '3xl', '4xl']} fontWeight={'bold'} color={'whatsapp.400'}  textDecoration={'line-through'} textDecorationColor={'gray.900'}>
+            <Text fontSize={['2xl', '2xl', '3xl', '4xl']} fontWeight={'bold'} color={'whatsapp.400'}  textDecoration={'line-through'} textDecorationColor={'white'}>
                 $
             </Text>
-            <Text fontSize={['2xl', '2xl', '3xl', '4xl']} color={'gray.400'} fontWeight={'bold'} textDecoration={'line-through'} textDecorationColor={'gray.900'}>
+            <Text fontSize={['2xl', '2xl', '3xl', '4xl']} color={'gray.400'} fontWeight={'bold'} textDecoration={'line-through'} textDecorationColor={'white'}>
                 {save}
             </Text>
         </Box>
@@ -50,7 +50,7 @@ function OfferItemsCard({icon, save, cost}:Props) {
         justifyContent={'space-evenly'}
         alignItems={'center'}
         >
-        <Text color={'gray.900'} fontSize={['xs', 'xs', 'sm', 'md']} fontWeight={'bold'}>Por Solo</Text>
+        <Text color={'white'} fontSize={['xs', 'xs', 'sm', 'md']} fontWeight={'bold'}>Por Solo</Text>
         <Box display={'flex'}>
             <Text fontSize={['2xl', '2xl', '4xl', '5xl']}  fontWeight={'bold'} color={'whatsapp.400'}>
                 $

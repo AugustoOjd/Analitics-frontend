@@ -1,5 +1,8 @@
+'use client'
+
 import { ArrowDownIcon, ArrowForwardIcon, CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { Avatar, Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, Spacer, StackDivider, VStack, useDisclosure } from '@chakra-ui/react'
+import Link from 'next/link'
 import React, { useRef, useState } from 'react'
 
 function BurgerMenuList() {
@@ -8,7 +11,7 @@ function BurgerMenuList() {
 
     const [isOpenCategory, setIsOpenCategory] = useState(false)
     const [isOpenMovies, setIsOpenMovies] = useState(false)
-  
+
   return (
     <>
     <Flex>
@@ -40,7 +43,7 @@ function BurgerMenuList() {
 
                     >
                     <Button colorScheme='gray.800' size='lg' rightIcon={<ArrowForwardIcon />} variant='link'>
-                        Home
+                        <Link href="/dashboard">Home</Link>
                     </Button>
                 </Box>
                 
@@ -73,7 +76,9 @@ function BurgerMenuList() {
                                 variant='link'
                                 size={'md'}
                                 >
-                                Action
+                                    <Link href={'/movies/action'}>
+                                        Action
+                                    </Link>
                                 </Button>
                             </Box>
                         </Box>
@@ -84,7 +89,9 @@ function BurgerMenuList() {
                                 variant='link'
                                 size={'md'}
                                 >
-                                Drama
+                                    <Link href={'/movies/drama'}>
+                                        Drama
+                                    </Link>
                                 </Button>
                             </Box>
                         </Box>
@@ -95,7 +102,22 @@ function BurgerMenuList() {
                                 variant='link'
                                 size={'md'}
                                 >
-                                Fantasy
+                                    <Link href={'/movies/terror'}>
+                                        terror
+                                    </Link>
+                                </Button>
+                            </Box>
+                        </Box>
+                        <Box h='30px'>
+                            <Box h='30px' >
+                                <Button 
+                                colorScheme='gray' 
+                                variant='link'
+                                size={'md'}
+                                >
+                                    <Link href={'/movies/fantasy'}>
+                                        Fantasy
+                                    </Link>
                                 </Button>
                             </Box>
                         </Box>
@@ -146,7 +168,9 @@ function BurgerMenuList() {
             </DrawerBody>
 
             <DrawerFooter>
-                <Button colorScheme='blue'>Logout</Button>
+                <Link href={'/'} replace>
+                    <Button colorScheme='blue'>Logout</Button>
+                </Link>
             </DrawerFooter>
             </DrawerContent>
         </Drawer>
