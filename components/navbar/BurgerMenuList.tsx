@@ -148,7 +148,9 @@ function BurgerMenuList() {
                             variant='link'
                             size={'md'}
                             >
-                            Free
+                            <Link href={'/movies/free'}>
+                                    Free
+                                </Link>
                             </Button>
                         </Box>
 
@@ -158,7 +160,9 @@ function BurgerMenuList() {
                             variant='link'
                             size={'md'}
                             >
-                            Premium
+                                <Link href={'/movies/premium'}>
+                                    Premium
+                                </Link>
                             </Button>
                         </Box>
                     </VStack>

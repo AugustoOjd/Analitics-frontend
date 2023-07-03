@@ -55,8 +55,16 @@ function NormalMenuList() {
                 Movies
             </MenuButton>
             <MenuList color={'gray.900'}>
-                <MenuItem>Free</MenuItem>
-                <MenuItem>Premium</MenuItem>
+                <MenuItem>
+                  <Link href={'/movies/free'}>
+                            Free
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link href={'/movies/premium'}>
+                            Premium
+                  </Link>
+                </MenuItem>
             </MenuList>
         </Menu>
       </Box>
