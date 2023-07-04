@@ -103,7 +103,7 @@ function BurgerMenuList() {
                                 size={'md'}
                                 >
                                     <Link href={'/movies/terror'}>
-                                        terror
+                                        Terror
                                     </Link>
                                 </Button>
                             </Box>

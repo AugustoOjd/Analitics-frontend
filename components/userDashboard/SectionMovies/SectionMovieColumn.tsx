@@ -1,6 +1,7 @@
 import { Box, HStack, Heading, Stack, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CardMovie from './CardMovie'
+import axios from 'axios'
 
 const data = [
     {
@@ -33,102 +34,73 @@ const data = [
     },
   ]
 
-const data2 = [
-  {
-    image: 'https://bit.ly/kent-c-dodds',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-  {
-    image: 'https://bit.ly/kent-c-dodds',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-  {
-    image: 'https://bit.ly/kent-c-dodds',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-  {
-    image: 'https://bit.ly/kent-c-dodds',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-  {
-    image: 'https://bit.ly/kent-c-dodds',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-]
-
-const data3 = [
-  {
-    image: 'https://bit.ly/ryan-florence',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-  {
-    image: 'https://bit.ly/ryan-florence',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-  {
-    image: 'https://bit.ly/ryan-florence',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-  {
-    image: 'https://bit.ly/ryan-florence',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-  {
-    image: 'https://bit.ly/ryan-florence',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-]
-const data4 = [
-  {
-    image: 'https://bit.ly/code-beast',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-  {
-    image: 'https://bit.ly/code-beast',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-  {
-    image: 'https://bit.ly/code-beast',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-  {
-    image: 'https://bit.ly/code-beast',
-    title: 'titulo de la cosa',
-    vip: false,
-    price: 321
-  },
-]
 
 function SectionMovieColumn() {
+
+  const [actionMovies, setActionMovies] = useState([])
+  const [dramaMovies, setDramaMovies] = useState([])
+  const [terrorMovies, setTerrorMovies] = useState([])
+  const [fantasyMovies, setFantasyMovies] = useState([])
+
+  async function getActionMovies() {
+    try {
+      const response = await axios.get('http://localhost:8080/api/movie?category=action&limit=10');
+      console.log(response.data.payload);
+      setActionMovies(response.data.payload)
+    } catch (error) {
+      setActionMovies([])
+      console.error(error);
+    }
+  }
+  
+  async function getDramaMovies() {
+    try {
+      const response = await axios.get('http://localhost:8080/api/movie?category=drama&limit=10');
+      console.log(response.data.payload);
+      setDramaMovies(response.data.payload)
+    } catch (error) {
+      setDramaMovies([])
+      console.error(error);
+    }
+  }
+
+  async function getTerrorMovies() {
+    try {
+      const response = await axios.get('http://localhost:8080/api/movie?category=terror&limit=10');
+      console.log(response.data.payload);
+      setTerrorMovies(response.data.payload)
+    } catch (error) {
+      setTerrorMovies([])
+      console.error(error);
+    }
+  }
+
+  async function getFantasyMovies() {
+    try {
+      const response = await axios.get('http://localhost:8080/api/movie?category=fantasy&limit=10');
+      console.log(response.data.payload);
+      setFantasyMovies(response.data.payload)
+    } catch (error) {
+      setFantasyMovies([])
+      console.error(error);
+    }
+  }
+
+
+  useEffect(() => {
+    getActionMovies()
+    getDramaMovies()
+    getTerrorMovies()
+    getFantasyMovies()
+  }, [])
+
+  
+  
+  
   return (
+    <>
     <Stack direction={['column']} spacing='24px'>
-        <Stack direction={['column']} gap={'20px'}>
+              {/* <Stack direction={['column']} gap={'20px'}>
             <Box>
                 <Heading 
                 h={3}
@@ -155,7 +127,7 @@ function SectionMovieColumn() {
                   }
                   </HStack>
             </Box>
-        </Stack>
+        </Stack> */}
         <Stack direction={['column']} gap={'20px'}>
             <Box>
                 <Heading 
@@ -163,11 +135,11 @@ function SectionMovieColumn() {
                 ml={2} 
                 fontSize={'xl'}
                 color={'white'}
-                >Porque viste...</Heading>
+                >Action</Heading>
             </Box>
             <Box 
                 w={['310px', '400px', '750px', '900px', '1200px', '1700px']} 
-                h={['220px', '250px', '300px']}
+                h={['240px', '250px', '300px']}
                 bg='orange.100'
                 display={'flex'}
                 justifyContent={'flex-start'}
@@ -177,8 +149,8 @@ function SectionMovieColumn() {
                 >
                   <HStack gap={5}>
                   {
-                    data.map((e:any, i)=> (
-                      <CardMovie key={i} image={e.image} title={e.title} vip={e.vip} price={e.price}  />
+                    actionMovies.map((e:any, i)=> (
+                      <CardMovie key={i} image={e.image} description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
                     ))
                   }
                   </HStack>
@@ -191,11 +163,11 @@ function SectionMovieColumn() {
                 ml={2} 
                 fontSize={'xl'}
                 color={'white'}
-                >Porque viste...</Heading>
+                >Drama</Heading>
             </Box>
             <Box 
                 w={['310px', '400px', '750px', '900px', '1200px', '1700px']} 
-                h={['220px', '250px', '300px']}
+                h={['240px', '250px', '300px']}
                 bg='orange.100'
                 display={'flex'}
                 justifyContent={'flex-start'}
@@ -205,8 +177,8 @@ function SectionMovieColumn() {
                 >
                   <HStack gap={5}>
                   {
-                    data.map((e:any, i)=> (
-                      <CardMovie key={i} image={e.image} title={e.title} vip={e.vip} price={e.price}  />
+                    dramaMovies.map((e:any, i)=> (
+                      <CardMovie key={i} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
                     ))
                   }
                   </HStack>
@@ -219,11 +191,11 @@ function SectionMovieColumn() {
                 ml={2} 
                 fontSize={'xl'}
                 color={'white'}
-                >Porque viste...</Heading>
+                >Terror</Heading>
             </Box>
             <Box 
                 w={['310px', '400px', '750px', '900px', '1200px', '1700px']} 
-                h={['220px', '250px', '300px']}
+                h={['240px', '250px', '300px']}
                 bg='orange.100'
                 display={'flex'}
                 justifyContent={'flex-start'}
@@ -233,73 +205,47 @@ function SectionMovieColumn() {
                 >
                   <HStack gap={5}>
                   {
-                    data.map((e:any, i)=> (
-                      <CardMovie key={i} image={e.image} title={e.title} vip={e.vip} price={e.price}  />
-                    ))
-                  }
-                  </HStack>
-            </Box>
-        </Stack>
-        <Stack direction={['column']} gap={'20px'}>
-            <Box>
-                <Heading 
-                h={3}
-                ml={2} 
-                fontSize={'xl'}
-                color={'white'}
-                >Porque viste...</Heading>
-            </Box>
-            <Box 
-                w={['310px', '400px', '750px', '900px', '1200px', '1700px']} 
-                h={['220px', '250px', '300px']}
-                bg='orange.100'
-                display={'flex'}
-                justifyContent={'flex-start'}
-                alignItems={'center'}
-                overflowX={'auto'}
-                px={2}
-                >
-                  <HStack gap={5}>
-                  {
-                    data.map((e:any, i)=> (
-                      <CardMovie key={i} image={e.image} title={e.title} vip={e.vip} price={e.price}  />
-                    ))
-                  }
-                  </HStack>
-            </Box>
-        </Stack>
-        <Stack direction={['column']} gap={'20px'}>
-            <Box>
-                <Heading 
-                h={3}
-                ml={2} 
-                fontSize={'xl'}
-                color={'white'}
-                >Porque viste...</Heading>
-            </Box>
-            <Box 
-                w={['310px', '400px', '750px', '900px', '1200px', '1700px']} 
-                h={['220px', '250px', '300px']}
-                bg='orange.100'
-                display={'flex'}
-                justifyContent={'flex-start'}
-                alignItems={'center'}
-                overflowX={'auto'}
-                px={2}
-                >
-                  <HStack gap={5}>
-                  {
-                    data.map((e:any, i)=> (
-                      <CardMovie key={i} image={e.image} title={e.title} vip={e.vip} price={e.price}  />
+                    terrorMovies.map((e:any, i)=> (
+                      <CardMovie key={i} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
                     ))
                   }
                   </HStack>
             </Box>
         </Stack>
 
-
+        <Stack direction={['column']} gap={'20px'}>
+            <Box>
+                <Heading 
+                h={3}
+                ml={2} 
+                fontSize={'xl'}
+                color={'white'}
+                >Fantasy</Heading>
+            </Box>
+            <Box 
+                w={['310px', '400px', '750px', '900px', '1200px', '1700px']} 
+                h={['240px', '250px', '300px']}
+                bg='orange.100'
+                display={'flex'}
+                justifyContent={'flex-start'}
+                alignItems={'center'}
+                overflowX={'auto'}
+                px={2}
+                >
+                  <HStack gap={5}>
+                  {
+                    fantasyMovies.map((e:any, i)=> (
+                      <CardMovie key={i} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
+                    ))
+                  }
+                  </HStack>
+            </Box>
+        </Stack>
 
     </Stack>
+
+
+    </>
   )
 }
 

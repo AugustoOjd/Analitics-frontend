@@ -1,20 +1,41 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons'
-import { Box, Stack, Image, HStack,Text, Button, Spacer } from '@chakra-ui/react'
+import { Box, Stack, Image, HStack,Text, Button, Spacer, useDisclosure } from '@chakra-ui/react'
 import React from 'react'
+import ModalMovieCard from './ModalMovieCard'
 
 interface Props {
-    image: string,
-    title: string,
-    vip: boolean,
-    price: number
+    id?:             number
+    title:          string
+    description?:    string
+    release?:        string
+    duration?:       string
+    image:          string
+    vip:            boolean
+    price:          number
+
 }
 
-function CardMovie({image, title, vip, price}:Props) {
+function CardMovie({id, image, title, description, release, duration, vip, price}:Props) {
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
   return (
+    <>
+    <ModalMovieCard 
+        id={id!} 
+        title={title} 
+        image={image} 
+        description={description!}
+        price={price} 
+        release={release!}
+        vip={vip} 
+        duration={duration!} 
+        isOpen={isOpen} 
+        onClose={onClose}/>
     <Box 
     bg={'white'}
     w={['230px', '250px', '250px', '250px', '260px']}
-    h={['200px', '230px', '270px', '280px', '280px']}
+    h={['220px', '230px', '270px', '280px', '280px']}
     rounded={'md'}
     boxShadow={'sm'}
     >
@@ -45,7 +66,7 @@ function CardMovie({image, title, vip, price}:Props) {
                 alignItems={'center'}
                 pl={2}
             >
-                <Text fontSize={'lg'} fontWeight={'semibold'}>
+                <Text fontSize={'md'} fontWeight={'semibold'}>
                     {title}
                 </Text>
             </Box>
@@ -53,20 +74,46 @@ function CardMovie({image, title, vip, price}:Props) {
                 w={'100%'}
                 h={'15%'}
             >
-                <HStack spacing='5px'>
+                <HStack spacing={[2]}>
                     <Box w={['70px']} display={'flex'} justifyContent={'flex-start'} alignItems={'center'} pl={2} >
-                        <Text fontSize={'xl'} fontWeight={'semibold'}>
-                            {vip ? 'Preium' : 'Free'}
+                        {
+                            vip
+                            ?
+                            <Box bg={'purple.600'} py={1} px={2} rounded={'md'}>
+                                <Text fontSize={['sm', 'md']} color={'white'} fontWeight={'semibold'}>
+                                    Premium
+                                </Text>
+                            </Box>
+                            :
+                            <Box bg={'orange.600'} py={1} px={2} rounded={'md'}>
+                                <Text fontSize={['md', 'md']} color={'white'} fontWeight={'semibold'}>
+                                    Free
+                                </Text>
+                            </Box>
+                        }
+                    </Box>
+                    
+                    <Box w={['70px']} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                        <Text fontSize={['lg']} fontWeight={'semibold'}>
+                            {
+                                price == 0
+                                ?
+                                ''
+                                :
+                                `$${price}`
+                            }
                         </Text>
                     </Box>
-                    <Box w={['70px']} display={'flex'} justifyContent={'flex-start'} alignItems={'center'}>
-                        <Text fontSize={'xl'} fontWeight={'semibold'}>
-                            ${price}
-                        </Text>
-                    </Box>
-                    <Spacer/>
-                    <Box display={'flex'} justifyContent={'flex-start'} alignItems={'center'} pr={1}>
-                        <Button colorScheme='blue' variant='solid' size={'sm'} rightIcon={<ArrowForwardIcon />}>
+                    {/* <Spacer/> */}
+                    
+                    <Box display={'flex'} justifyContent={'flex-start'} alignItems={'center'} pr={2}>
+                        <Button 
+                            colorScheme='blue' 
+                            variant='solid' 
+                            size={['sm', 'md']} 
+                            rightIcon={<ArrowForwardIcon 
+                            onClick={()=>onOpen()}
+                            />}>
                             View
                         </Button>
                     </Box>
@@ -74,6 +121,10 @@ function CardMovie({image, title, vip, price}:Props) {
             </Box>
         </Stack>
     </Box>
+
+
+
+    </>
   )
 }
 

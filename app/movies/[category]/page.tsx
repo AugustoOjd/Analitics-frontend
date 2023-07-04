@@ -8,12 +8,12 @@ import React from 'react'
 
 function CategoryPage() {
   
-  const params = useParams()
-  console.log(params)
+  const {category} = useParams()
+  console.log(category)
   return (
     <>
     <NavbarContainer/>
-    <CategoryContainer category={params}/>
+    <CategoryContainer category={category}/>
     </>
   )
 }
