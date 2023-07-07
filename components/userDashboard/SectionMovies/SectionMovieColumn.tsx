@@ -1,4 +1,4 @@
-import { Box, HStack, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, HStack, Heading, Spinner, Stack, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import CardMovie from './CardMovie'
 import axios from 'axios'
@@ -149,8 +149,12 @@ function SectionMovieColumn() {
                 >
                   <HStack gap={5}>
                   {
+                    actionMovies.length <= 0
+                    ?
+                    <Spinner />
+                    :
                     actionMovies.map((e:any, i)=> (
-                      <CardMovie key={i} image={e.image} description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
+                      <CardMovie key={e.id} image={e.image} description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
                     ))
                   }
                   </HStack>
@@ -177,8 +181,12 @@ function SectionMovieColumn() {
                 >
                   <HStack gap={5}>
                   {
+                    dramaMovies.length <= 0
+                    ?
+                    <Spinner />
+                    :
                     dramaMovies.map((e:any, i)=> (
-                      <CardMovie key={i} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
+                      <CardMovie key={e.id} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
                     ))
                   }
                   </HStack>
@@ -205,8 +213,12 @@ function SectionMovieColumn() {
                 >
                   <HStack gap={5}>
                   {
-                    terrorMovies.map((e:any, i)=> (
-                      <CardMovie key={i} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
+                    terrorMovies.length <= 0
+                    ?
+                    <Spinner />
+                    :
+                    terrorMovies.map((e:any)=> (
+                      <CardMovie key={e.id} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
                     ))
                   }
                   </HStack>
@@ -234,8 +246,12 @@ function SectionMovieColumn() {
                 >
                   <HStack gap={5}>
                   {
+                    fantasyMovies.length <= 0
+                    ?
+                    <Spinner />
+                    :
                     fantasyMovies.map((e:any, i)=> (
-                      <CardMovie key={i} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
+                      <CardMovie key={e.id} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
                     ))
                   }
                   </HStack>
