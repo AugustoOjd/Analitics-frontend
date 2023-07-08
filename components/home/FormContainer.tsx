@@ -27,8 +27,7 @@ function FormContainer() {
               {
                 signup
                 ?
-                ''
-                // <FormRegister/>
+                <FormRegister/>
                 :
                 <FormLogin/>
               }

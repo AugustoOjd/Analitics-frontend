@@ -3,6 +3,8 @@
 import FooterContainer from "@/components/footer/FooterContainer";
 import { Providers } from "./providers";
 import { Inter } from 'next/font/google'
+import { store } from '../store/store'
+import { Provider } from 'react-redux'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,10 +23,14 @@ export default function RootLayout({
       <body
         suppressHydrationWarning={true}
       >
+        <Provider store={store}>
+          
           <Providers>
             {children}
             <FooterContainer/>
           </Providers>
+          
+        </Provider>
       </body>
     </html>
   )

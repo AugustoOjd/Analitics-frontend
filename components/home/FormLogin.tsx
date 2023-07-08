@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Button, Input, Text } from '@chakra-ui/react'
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
@@ -7,7 +7,15 @@ import {
     FormErrorMessage,
     FormHelperText,
   } from '@chakra-ui/react'
+  // api
 import { userApi } from '@/api/usersApi';
+// redux
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
+import { login } from '@/features/auth/userSlice';
+import { IUser } from '@/interface/IUser';
+// navigate
+import { useRouter } from 'next/navigation'
 
 
   interface IFormInput {
@@ -18,32 +26,52 @@ import { userApi } from '@/api/usersApi';
 function FormLogin() {
 
   const [loginError, setloginError] = useState('')
+  const [isLogin, setIsLogin] = useState(false)
+  const router = useRouter()
+
+  const user = useSelector((state:RootState)=> state.auth.user)
+  const dispatch = useDispatch()
 
   const { register, handleSubmit} = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = async data => {
-    console.log(data)
     try {
+      setIsLogin(true)
+      
+      setTimeout(() => {
+        setIsLogin(false)
+      }, 5000);
+
       const resp = await userApi.post('/signin', {email: data.email, password: data.password})
-      console.log(resp.data)
       if(resp.data.error){
-        setloginError(resp.data.error.description)
+        return setloginError(resp.data.error.description)
       }
+      const {firstName, lastName, age, email, role, status, type, wallet }:IUser = resp.data.payload
+      await dispatch(login({firstName, lastName, age, email, role, status, type, wallet}))
+      
+      if(user && user != null) return router.push('/dashboard')
+
     } catch (error:any) {
 
       // console.log(error.response.data.message)
+      setIsLogin(false)
       setloginError(error.response.data.message)
     }
   };
+
+  useEffect(() => {
+    setIsLogin(false)
+  }, [loginError])
+  
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormControl isRequired>
       
       <FormLabel>Email address</FormLabel>
-      <Input type='email' placeholder='Email' {...register("email", { required: true, maxLength: 20 })} />
+      <Input type='email' id='email' placeholder='Email' {...register("email", { required: true, maxLength: 20 })} />
       
       <FormLabel>Password</FormLabel>
-      <Input type='password' placeholder='Password' {...register("password", {required: true, maxLength:20})}/>
+      <Input type='password' id='password'  placeholder='Password' {...register("password", {required: true, maxLength:20})}/>
 
       {
         loginError.length >= 0
@@ -55,14 +83,18 @@ function FormLogin() {
         </FormHelperText>
       }
       
-      
       <Button
+      isLoading={isLogin? true : false}
+      variant={isLogin ? 'outline': 'solid'}
+      loadingText='Loging...'
       mt={4}
       colorScheme='teal'
       type='submit'
       >
           Login
         </Button>
+      
+
       </FormControl>
     </form>
   )

@@ -154,7 +154,7 @@ function SectionMovieColumn() {
                     <Spinner />
                     :
                     actionMovies.map((e:any, i)=> (
-                      <CardMovie key={e.id} image={e.image} description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
+                      <CardMovie key={e.movieId} image={e.image} description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
                     ))
                   }
                   </HStack>
@@ -186,7 +186,7 @@ function SectionMovieColumn() {
                     <Spinner />
                     :
                     dramaMovies.map((e:any, i)=> (
-                      <CardMovie key={e.id} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
+                      <CardMovie key={e.movieId} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
                     ))
                   }
                   </HStack>
@@ -218,7 +218,7 @@ function SectionMovieColumn() {
                     <Spinner />
                     :
                     terrorMovies.map((e:any)=> (
-                      <CardMovie key={e.id} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
+                      <CardMovie key={e.movieId} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
                     ))
                   }
                   </HStack>
@@ -251,7 +251,7 @@ function SectionMovieColumn() {
                     <Spinner />
                     :
                     fantasyMovies.map((e:any, i)=> (
-                      <CardMovie key={e.id} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
+                      <CardMovie key={e.movieId} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
                     ))
                   }
                   </HStack>

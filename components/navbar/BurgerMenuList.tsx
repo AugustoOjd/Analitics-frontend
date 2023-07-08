@@ -1,9 +1,12 @@
 'use client'
 
+import { logout } from '@/features/auth/userSlice'
 import { ArrowDownIcon, ArrowForwardIcon, CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { Avatar, Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, Spacer, StackDivider, VStack, useDisclosure } from '@chakra-ui/react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React, { useRef, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 function BurgerMenuList() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -11,6 +14,16 @@ function BurgerMenuList() {
 
     const [isOpenCategory, setIsOpenCategory] = useState(false)
     const [isOpenMovies, setIsOpenMovies] = useState(false)
+
+    const router = useRouter()
+
+    const dispatch = useDispatch()
+  
+    const logoutAndHome = async ()=>{
+      await dispatch(logout())
+  
+      return router.replace('/')
+    }
 
   return (
     <>
@@ -172,9 +185,9 @@ function BurgerMenuList() {
             </DrawerBody>
 
             <DrawerFooter>
-                <Link href={'/'} replace>
-                    <Button colorScheme='blue'>Logout</Button>
-                </Link>
+                    <Button colorScheme='blue' onClick={()=> logoutAndHome()}>
+                        Logout
+                    </Button>
             </DrawerFooter>
             </DrawerContent>
         </Drawer>

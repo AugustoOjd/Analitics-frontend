@@ -1,10 +1,22 @@
+import { logout } from '@/features/auth/userSlice'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { Avatar, Box, Button, HStack, Menu, MenuButton, MenuItem, MenuList, Spacer } from '@chakra-ui/react'
 import Link from 'next/link'
 import React from 'react'
-
+import { useDispatch } from 'react-redux'
+import {useRouter} from 'next/navigation'
 
 function NormalMenuList() {
+
+  const router = useRouter()
+
+  const dispatch = useDispatch()
+
+  const logoutAndHome = async ()=>{
+    await dispatch(logout())
+
+    return router.replace('/')
+  }
 
   return (
     <HStack w={'100%'} spacing='24px'>
@@ -72,9 +84,9 @@ function NormalMenuList() {
       <Spacer/>
 
       <Box w={['auto']} h='40px' >
-        <Link href={'/'} replace>
-          <Button colorScheme='blue'>Logout</Button>
-        </Link>
+          <Button colorScheme='blue' onClick={()=> logoutAndHome()}>
+            Logout
+          </Button>
       </Box>
     </HStack> 
   )
