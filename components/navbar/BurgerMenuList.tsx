@@ -1,5 +1,6 @@
 'use client'
 
+import { userApi } from '@/api/usersApi'
 import { logout } from '@/features/auth/userSlice'
 import { ArrowDownIcon, ArrowForwardIcon, CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { Avatar, Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, Spacer, StackDivider, VStack, useDisclosure } from '@chakra-ui/react'
@@ -20,10 +21,15 @@ function BurgerMenuList() {
     const dispatch = useDispatch()
   
     const logoutAndHome = async ()=>{
-      await dispatch(logout())
-  
-      return router.replace('/')
-    }
+        try {
+          await userApi.get('/logout')
+          dispatch(logout())
+      
+          return router.replace('/')
+        } catch (error) {
+          console.log(error)
+        }
+      }
 
   return (
     <>

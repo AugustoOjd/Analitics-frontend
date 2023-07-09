@@ -5,6 +5,7 @@ import Link from 'next/link'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import {useRouter} from 'next/navigation'
+import { userApi } from '@/api/usersApi'
 
 function NormalMenuList() {
 
@@ -13,9 +14,14 @@ function NormalMenuList() {
   const dispatch = useDispatch()
 
   const logoutAndHome = async ()=>{
-    await dispatch(logout())
-
-    return router.replace('/')
+    try {
+      await userApi.get('/logout')
+      dispatch(logout())
+  
+      return router.replace('/')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

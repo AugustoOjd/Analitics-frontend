@@ -45,9 +45,13 @@ function FormLogin() {
       if(resp.data.error){
         return setloginError(resp.data.error.description)
       }
+      console.log('response',resp.data.payload)
       const {firstName, lastName, age, email, role, status, type, wallet }:IUser = resp.data.payload
-      await dispatch(login({firstName, lastName, age, email, role, status, type, wallet}))
+
+      const globalState = dispatch(login({firstName, lastName, age, email, role, status, type, wallet}))
       
+      await globalState
+      console.log(user)
       if(user && user != null) return router.push('/dashboard')
 
     } catch (error:any) {

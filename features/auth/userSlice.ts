@@ -18,8 +18,8 @@ export interface AuthState {
     initialState,
     reducers: {
         login: (state, action)=>{
-            state.login = true
             state.user = action.payload
+            if(state.user) state.login = true
         },
         logout: (state)=>{
             state.login = false

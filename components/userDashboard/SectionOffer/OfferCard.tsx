@@ -5,18 +5,21 @@ import { TimeIcon } from '@chakra-ui/icons'
 
 const data = [
   {
+    id: 1,
     title: 'Plan mensual',
     icon: <TimeIcon/>,
     save: 0,
     cost: 20
   },
   {
+    id: 2,
     title: 'Plan 6 meses',
     icon: <TimeIcon/>,
     save: 60,
     cost: 60
   },
   {
+    id: 3,
     title: 'Plan 12 meses',
     icon: <TimeIcon/>,
     save: 90,
@@ -29,7 +32,7 @@ function OfferCard() {
   return (
     <>
     {
-      data.map((i:any, index)=> (
+      data.map((i:any)=> (
       <LinkBox 
         as={'button'} 
         onClick={()=> console.log(i.title)}
@@ -67,7 +70,7 @@ function OfferCard() {
             h={['60px', '60px', '250px', '300px']}
             alignItems={'center'}
             >
-                <OfferItemsCard key={i.title} icon={i.icon} save={i.save} cost={i.cost}/>
+                <OfferItemsCard key={i.id} icon={i.icon} save={i.save} cost={i.cost}/>
           </Stack>
       </Box>
       </LinkBox>
