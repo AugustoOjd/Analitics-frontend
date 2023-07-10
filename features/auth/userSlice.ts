@@ -6,11 +6,13 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 export interface AuthState {
     user: IUser | null
     login: boolean
+    isCheking: boolean
   }
   
   const initialState: AuthState = {
     user: null,
-    login: false
+    login: false,
+    isCheking: true
   }
 
   export const authSlice = createSlice({
@@ -18,12 +20,15 @@ export interface AuthState {
     initialState,
     reducers: {
         login: (state, action)=>{
-            state.user = action.payload
-            if(state.user) state.login = true
+          state.user = action.payload
+          if(state.user) state.login = true
         },
         logout: (state)=>{
             state.login = false
             state.user = null
+        },
+        checkingAuth:(state, action)=>{
+      
         }
     },
   })

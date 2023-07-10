@@ -48,15 +48,10 @@ function FormLogin() {
       console.log('response',resp.data.payload)
       const {firstName, lastName, age, email, role, status, type, wallet }:IUser = resp.data.payload
 
-      const globalState = dispatch(login({firstName, lastName, age, email, role, status, type, wallet}))
-      
-      await globalState
-      console.log(user)
-      if(user && user != null) return router.push('/dashboard')
+      dispatch(login({firstName, lastName, age, email, role, status, type, wallet}))
 
     } catch (error:any) {
 
-      // console.log(error.response.data.message)
       setIsLogin(false)
       setloginError(error.response.data.message)
     }
@@ -65,6 +60,10 @@ function FormLogin() {
   useEffect(() => {
     setIsLogin(false)
   }, [loginError])
+  
+  useEffect(() => {
+    if(user && user != null) return router.push('/dashboard')
+  }, [user])
   
 
   return (
