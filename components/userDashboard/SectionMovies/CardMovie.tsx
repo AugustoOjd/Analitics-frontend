@@ -4,18 +4,19 @@ import React from 'react'
 import ModalMovieCard from './ModalMovieCard'
 
 interface Props {
-    id?:             number
-    title:          string
-    description?:    string
-    release?:        string
-    duration?:       string
-    image:          string
-    vip:            boolean
-    price:          number
+    id?:                number
+    title:              string
+    description?:       string
+    release?:           string
+    duration?:          string
+    image:              string
+    vip:                boolean
+    price:              number
+    season:             number
 
 }
 
-function CardMovie({id, image, title, description, release, duration, vip, price}:Props) {
+function CardMovie({id, image, title, description, season, release, duration, vip, price}:Props) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -26,6 +27,7 @@ function CardMovie({id, image, title, description, release, duration, vip, price
         title={title} 
         image={image} 
         description={description!}
+        season={season}
         price={price} 
         release={release!}
         vip={vip} 
@@ -50,7 +52,7 @@ function CardMovie({id, image, title, description, release, duration, vip, price
             >
                 <Image 
                     src={image} 
-                    alt='Dan Abramov' 
+                    alt={title} 
                     objectFit='fill' 
                     w={'100%'}
                     h={'100%'}
@@ -66,7 +68,7 @@ function CardMovie({id, image, title, description, release, duration, vip, price
                 alignItems={'center'}
                 pl={2}
             >
-                <Text fontSize={'md'} fontWeight={'semibold'}>
+                <Text fontSize={['md', 'md', 'lg']} fontWeight={'semibold'}>
                     {title}
                 </Text>
             </Box>
@@ -111,9 +113,9 @@ function CardMovie({id, image, title, description, release, duration, vip, price
                             colorScheme='blue' 
                             variant='solid' 
                             size={['sm', 'md']} 
-                            rightIcon={<ArrowForwardIcon 
-                            onClick={()=>onOpen()}
-                            />}>
+                            rightIcon={<ArrowForwardIcon/>} 
+                            onClick={()=> onOpen()}
+                            >
                             View
                         </Button>
                     </Box>

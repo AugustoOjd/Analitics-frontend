@@ -154,7 +154,17 @@ function SectionMovieColumn() {
                     <Spinner />
                     :
                     actionMovies.map((e:any, i)=> (
-                      <CardMovie key={e.movieId} image={e.image} description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
+                      <CardMovie 
+                        key={e.movieId} 
+                        season={e.seasons} 
+                        image={e.image} 
+                        description={e.description} 
+                        title={e.title}
+                        release={e.release}
+                        duration={e.duration}
+                        vip={e.premium} 
+                        price={e.price} 
+                        id={e.movieId} />
                     ))
                   }
                   </HStack>
@@ -186,7 +196,18 @@ function SectionMovieColumn() {
                     <Spinner />
                     :
                     dramaMovies.map((e:any, i)=> (
-                      <CardMovie key={e.movieId} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId} />
+                      <CardMovie 
+                        key={e.movieId} 
+                        image={e.image} 
+                        season={e.seasons}  
+                        description={e.description} 
+                        title={e.title} 
+                        vip={e.premium} 
+                        price={e.price} 
+                        id={e.movieId} 
+                        release={e.release}
+                        duration={e.duration}
+                        />
                     ))
                   }
                   </HStack>
@@ -218,7 +239,18 @@ function SectionMovieColumn() {
                     <Spinner />
                     :
                     terrorMovies.map((e:any)=> (
-                      <CardMovie key={e.movieId} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
+                      <CardMovie 
+                        key={e.movieId} 
+                        image={e.image}  
+                        description={e.description} 
+                        season={e.seasons} 
+                        title={e.title} 
+                        vip={e.premium} 
+                        price={e.price} 
+                        id={e.movieId} 
+                        release={e.release}
+                        duration={e.duration}
+                        />
                     ))
                   }
                   </HStack>
@@ -251,7 +283,18 @@ function SectionMovieColumn() {
                     <Spinner />
                     :
                     fantasyMovies.map((e:any, i)=> (
-                      <CardMovie key={e.movieId} image={e.image}  description={e.description} title={e.title} vip={e.premium} price={e.price} id={e.movieId}  />
+                      <CardMovie 
+                        key={e.movieId} 
+                        image={e.image}  
+                        description={e.description} 
+                        season={e.seasons} 
+                        title={e.title} 
+                        vip={e.premium} 
+                        price={e.price} 
+                        id={e.movieId}  
+                        release={e.release}
+                        duration={e.duration}
+                        />
                     ))
                   }
                   </HStack>
