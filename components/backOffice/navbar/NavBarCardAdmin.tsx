@@ -1,7 +1,27 @@
+import { userApi } from '@/api/usersApi'
+import { logout } from '@/features/auth/userSlice'
 import { Avatar, Box, Button, HStack, Spacer, Stack, Text } from '@chakra-ui/react'
+import { useRouter } from 'next/navigation'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 
 function NavBarCardAdmin() {
+
+  const router = useRouter()
+
+  const dispatch = useDispatch()
+
+  const logoutAndHome = async ()=>{
+    try {
+      await userApi.get('/logout')
+      dispatch(logout())
+  
+      return router.replace('/')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
   return (
     <Stack w={'100%'}>
       <HStack w={'100%'} spacing='24px' mb={2}>
@@ -12,7 +32,11 @@ function NavBarCardAdmin() {
         <Spacer/>
 
         <Box w={['auto']} h='40px' >
-            <Button colorScheme='blue'>Logout</Button>
+            <Button 
+              colorScheme='blue'
+              onClick={()=> logoutAndHome()}
+              >Logout
+          </Button>
         </Box>
       </HStack>
       

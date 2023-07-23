@@ -7,10 +7,11 @@ import SectionMoviesContainer from './SectionMovies/SectionMoviesContainer'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store/store'
 import { useRouter } from 'next/navigation'
+import BackOfficeContainer from '../backOffice/BackOfficeContainer'
 
 function DashboardContainer() {
 
-  const login = useSelector((state:RootState)=> state.auth.login)
+  const {login, user} = useSelector((state:RootState)=> state.auth)
   const router = useRouter()
 
   const [isCheking, setIsCheking] = useState(true)
@@ -20,9 +21,9 @@ function DashboardContainer() {
   }, [])
 
   const checkingUser = ()=>{
-    setTimeout(() => {
+    if(user){
       setIsCheking(false)
-    }, 2000);
+    }
   }
 
   useEffect(() => {
@@ -45,10 +46,10 @@ function DashboardContainer() {
         />
       </Box>
       :
-      <Box>
+        <Box>
           <OfferContainer/>
           <SectionMoviesContainer/>
-      </Box> 
+        </Box> 
     }
     
     </>

@@ -90,7 +90,7 @@ function ModalMovieCard({id, title, description, release, duration, image, seaso
                         <Badge fontSize={['md', 'lg', 'xl']} variant={'outline'} colorScheme='orange'> Seasons: </Badge>
                       </Text>
                       <Text fontSize={['md', 'lg', 'xl']} fontWeight={'semibold'}>
-                        { data.map((e:any)=> ( <Badge ml='1' fontSize={['12px', '15px', '18px']} colorScheme='orange'> {e} </Badge>))}
+                        { data.map((e:any)=> ( <Badge key={e} ml='1' fontSize={['12px', '15px', '18px']} colorScheme='orange'> {e} </Badge>))}
                       </Text>
                     </Box>
                   }

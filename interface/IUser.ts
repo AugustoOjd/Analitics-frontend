@@ -3,9 +3,10 @@ export type TRole = 'user' | 'admin'
 export type TType = 'regular' | 'subscriber'
 
 export interface IUser {
+    userId:         number
     firstName:      string,
-    lastName:       string | null,
-    age:            string | null,
+    lastName:       string,
+    age:            string,
     email:          string,
     password:       string,
     role:           TRole,

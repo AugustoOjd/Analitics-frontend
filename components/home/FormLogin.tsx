@@ -62,7 +62,12 @@ function FormLogin() {
   }, [loginError])
   
   useEffect(() => {
-    if(user && user != null) return router.push('/dashboard')
+    if(user && user != null){
+      if(user.role == 'admin') return router.push('/backoffice')
+      else{
+        return router.push('/dashboard')
+      }
+    }
   }, [user])
   
 

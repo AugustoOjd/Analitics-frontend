@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Table,
     Thead,
@@ -14,6 +14,7 @@ import {
     Button,
     Spacer,
   } from '@chakra-ui/react'
+import axios from 'axios';
 
 const dataTest = [
     {
@@ -37,18 +38,38 @@ const dataTest = [
         sold: 67
     },
     {
-        nombre: 'testnaxxm',
+        nombre: 'testnxm',
         stock: 22, 
         sold: 67
     },
     {
-        nombre: 'testnaxxm',
+        nombre: 'testnaxxmVVV',
         stock: 22, 
         sold: 67
     },
 ]
 
 function TableStatsCard() {
+
+    const [data, setData] = useState([])
+
+    async function getAllMovies() {
+        try {
+            // recibe skip and limit
+            // FALTA API DE SOLD AND STOCK DE MOVIES
+          const response = await axios.get('http://localhost:8080/api/movie?limit=6');
+          console.log(response.data.payload);
+          setData(response.data.payload)
+        } catch (error) {
+            setData([])
+          console.error(error);
+        }
+      }
+
+    useEffect(() => {
+        getAllMovies()
+    }, [])
+    
   return (
     <Box
     bg={'white'}
@@ -78,7 +99,7 @@ function TableStatsCard() {
                 <Thead>
                 <Tr>
                     <Th>Nombre</Th>
-                    <Th>Stock</Th>
+                    <Th isNumeric>Stock</Th>
                     <Th isNumeric>Sold</Th>
                 </Tr>
                 </Thead>
@@ -86,7 +107,7 @@ function TableStatsCard() {
                 <Tbody>
                     {
                         dataTest.map((e:any)=> (
-                        <Tr>
+                        <Tr key={e.nombre}>
                             <Td>{e.nombre}</Td>
                             <Td isNumeric>{e.stock}</Td>
                             <Td isNumeric>{e.sold}</Td>

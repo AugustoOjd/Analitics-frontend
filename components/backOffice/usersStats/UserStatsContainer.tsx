@@ -1,11 +1,11 @@
 import { Box, Heading, Stack } from '@chakra-ui/react'
 import React from 'react'
-import TableStatsCard from './TableStatsCard'
+import TableStatsUser from './TableStatsUser'
 
-function MovieStatsContainer() {
+function UserStatsContainer() {
   return (
     <Box
-        bg={'green.100'}
+        bg={'red.100'}
         w={'100%'}
         h={['500px', '500px', '520px']}
         py={5}
@@ -17,10 +17,10 @@ function MovieStatsContainer() {
         <Heading
           fontSize={['md', 'lg', 'xl', '2xl']}
         >
-          Products
+          Users
         </Heading>
 
-        <TableStatsCard/>
+        <TableStatsUser/>
 
       </Stack>
 
@@ -28,4 +28,4 @@ function MovieStatsContainer() {
   )
 }
 
-export default MovieStatsContainer
+export default UserStatsContainer
